@@ -1,0 +1,28 @@
+<fieldset>
+	<div class="row">
+		<!--[form:bookmark]-->
+<div class="form-element">
+  <label for="bookmark_url">Url (e.g. http://slashdot.org)</label>
+  <%= text_field 'bookmark', 'url', "value" => @params['url'], "size" => 50 %>
+</div>
+<br />
+<div class="form-element">
+  <label for="bookmark_name">Name (e.g. Slashdot)</label>
+  <%= text_field 'bookmark', 'name', "value" => @params['title'], "size" => 50  %>
+</div>
+<br />
+<div class="form-element">
+  <label for="bookmark_description">Description (e.g. News for Nerds)</label>
+  <%= text_area 'bookmark', 'description', "cols" => 43, "rows" => 4  %>
+</div>
+<br />
+<div class="form-element">
+  <label for="bookmark_tags">Tags (e.g. tech news)</label>
+  
+  <%= text_field_with_auto_complete :bookmark, :tags, :skip_style => true, :tokens=> ",", "value" => @bookmark.tag_names.join(" "), "name" => "tags", "size" => 50 %>
+</div>
+
+<!--[eoform:bookmark]-->
+
+	</div>
+</fieldset>

@@ -1,0 +1,32 @@
+<fieldset>
+	<div class="row">
+		<!--[form:import]-->
+		<%= form_remote_tag :update => 'edit-tags', :url => { :controller => 'bookmarks', :action => 'import_delicious' },
+		:loading => "AjaxScaffold.newOnLoading(request,'import');", 
+		:complete => "Effect.Fade('import-new-loading-indicator', {duration:0.1});" %>
+		<div class="form-element">
+			<label for="import_delicious_username">del.icio.us Username</label>
+			<input type="text"  name="delicious_username"  />
+		</div>
+
+		<div class="form-element">
+			<label for="delicious_password">del.icio.us Password</label>
+			<input type="password"  name="delicious_password" />
+		</div>
+		<div class="form-element">
+			<label for="delicious_recent">Only import recent bookmarks?</label>
+	    <input type="radio" name="delicious_recent_yn" value="yes" onclick="javascript:Effect.Appear('delicious_recent_num',{duration:0.15});">Yes
+	    <input type="radio" name="delicious_recent_yn" value="no" onclick="javascript:Effect.Fade('delicious_recent_num',{duration:0.15});">No
+		</div>
+		<div id="delicious_recent_num" class="form-element" style="display: none;">
+			<label for="delicious_recent_num">Number of bookmarks to import (Default 15)</label>
+			<input type="input" size="3" name="delicious_recent_num" value="15"/>
+		</div>
+		<div class="form-element">
+		  <%= submit_tag "Import", :class => "submit" %><%= loading_indicator_tag 'import', "new" %>
+		</div>
+    <%= end_form_tag %>
+		<!--[eoform:import]-->
+
+	</div>
+</fieldset>

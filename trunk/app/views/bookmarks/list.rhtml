@@ -1,0 +1,56 @@
+<div id="bookmark-list-wrapper" class="ajax-scaffold-wrapper">
+<div id="bookmark-list-header" class="ajax-scaffold-header">
+<h2>url.markr</h2>
+<div class="actions">  
+<%= link_to(image_tag("feed-icon-16x16.png", :size => "16x16", :border => 0), "bookmarks/rss?tags=#{@tags}", :title =>"RSS feed of #{@tags} tags") %>
+</div>
+</div>
+<div class="edit-tags" id="edit-tags"></div>
+<table id="bookmark-list" class="ajax-scaffold" cellpadding="0" cellspacing="0">
+  <thead>  
+  <tr class="header">
+	  	
+    	
+	  	<th>bookmarks (<%= @total_bookmarks %><%= @total_bookmarks_tag %>)</th><th style="text-align: right;">welcome <%= current_user.login %></th>
+  </thead>
+  <tbody>
+    <tr id="bookmark-error-message" class="error-message" style="display:none;">
+      <td colspan="<%= num_columns - 1 %>">
+          <p>An error has occurred</p><%= @total_bookmarks %>
+      </td>
+      <td class="actions">
+         <%= link_to_function "Close", "AjaxScaffold.hideError('bookmark');" %>   
+      </td>
+    </tr>
+    <tr id="bookmark-empty-message" class="empty-message" <%= " style=\"display:none;\" " if !@bookmarks.empty? %>>
+      <td colspan="<%= num_columns %>">No Entries</td>
+    </tr>
+  </tbody>  
+  <tbody id="bookmark-list-body">
+    <% if !@bookmarks.empty? %>
+  	  <%= render :partial => 'bookmark', :collection => @bookmarks, :locals => { :hidden => false } %>
+  	<% else %>
+    <% # Do not remove the following TR, it is needed to load up the even row color when enableHighlighting is turned on and the list is empty %>
+    <tr class="even ignore" style="display: none;">
+      <td colspan="<%= num_columns %>"></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div id="pagelinks" class="pagelinks">
+<%= link_to_remote('< older', :update => 'dynamic', :url =>{:params => params.merge('page' => @bookmarks_pages.current.next)}) if @bookmarks_pages.current.next %>
+<%= ' | ' if @bookmarks_pages.current.previous and @bookmarks_pages.current.next %>
+<%= link_to_remote('newer >', :update => 'dynamic', :url => {:params => params.merge('page' => @bookmarks_pages.current.previous)}) if @bookmarks_pages.current.previous %>
+</div>
+
+
+
+
+<script type="text/javascript">
+TableBodyUtil.enableHighlighting(AjaxScaffold.getTableBodyElement('bookmark'));
+<% if !@bookmarks.empty? %>
+TableBodyUtil.paintStripes(AjaxScaffold.getTableBodyElement('bookmark'));
+<% end %>
+Rico.Corner.round('bookmark-list-wrapper', {color: '#005CB8', bgColor: '#fff', compact: true});
+</script>

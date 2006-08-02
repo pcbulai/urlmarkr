@@ -1,0 +1,29 @@
+<% # The following is used when the browser doesn't have javascript enabled %>
+<% classAttr = cycle("", "class=\"even\"") %>
+<tr <%= classAttr %> id="view-tag-<%= tag.id %>" <%= "style=\"display: none;\"" if hidden %>>
+	<% for column in Tag.content_columns %>
+	<td><%=h tag.send(column.name) %>&nbsp;</td>
+	<% end %>
+ 	<td class="actions" align="right" style="font-size: 10px;">
+ 	
+ 	  <%= loading_indicator_tag 'tag', "edit-#{tag.id}" %>
+   	<%= link_to_remote (image_tag("edit-tags.gif", :border => 0, :align => 'absmiddle')), 
+   	                    { :url => { :controller => 'tags', :action => 'edit', :id => tag }, 
+   	                      :loading => "AjaxScaffold.editOnLoading(request,'tag', #{tag.id});",
+   	                      :success => "AjaxScaffold.editOnSuccess(request,'tag', #{tag.id});",
+   	                      :failure => "AjaxScaffold.editOnFailure(request,'tag', #{tag.id});",
+   	                      :post => true },
+   	                    { :href => url_for( :controller => 'tags', :action => 'edit', :id => tag ),
+   	                    	:title =>"edit bookmark" } %>
+   	<%= link_to_remote (image_tag("delete.gif", :border => 0, :align => 'absmiddle')), 
+   	                    { :url => { :controller => 'tags',:action => 'destroy', :id => tag }, 
+   	                      :confirm => 'Are you sure?', 
+   	                      :loading => "AjaxScaffold.deleteOnLoading('tag', #{tag.id});",
+   	                      :success => "AjaxScaffold.deleteOnSuccess('tag', #{tag.id});",
+   	                      :failure => "AjaxScaffold.deleteOnFailure('tag', #{tag.id});",
+   	                      :post => true },
+   	                    { :href => url_for(:controller => 'tags', :action => 'destroy', :id => tag),
+   	                    	:title =>"delete bookmark" } %>
+
+  </td>
+</tr>

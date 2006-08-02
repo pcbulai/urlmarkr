@@ -1,0 +1,18 @@
+development:
+  adapter: mysql
+  database: urlmarkr
+  username: 
+  password: 
+  host: 
+testing:
+  adapter: mysql
+  database: urlmarkr
+  username: 
+  password: 
+  host: 
+production:
+  adapter: mysql
+  database: urlmarkr
+  username: 
+  password: 
+  host: 

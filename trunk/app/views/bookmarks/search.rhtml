@@ -1,0 +1,20 @@
+<table id="preference-list" class="ajax-scaffold" cellpadding="0" cellspacing="0">
+  <thead>  
+	  <tr class="header">
+    	<th>search</th>
+	<th>&nbsp;</th>
+	<th style="text-align: right;"><span style="font-color: white;"><%= link_to_remote(h("close"), :update => "edit-tags", :url =>{ :controller => 'bookmarks', :action => "clear"}) %></span></th>
+	  </tr> 
+  </thead>
+  <tbody id="preference-list-body">
+    <!-- Do not remove the following TR, it is needed to load up the even row color when enableHighlighting is turned on -->
+        <tr id="delicious-import" class="create">
+  <td colspan="5" class="create" style="background: #DAFFCD;">
+    	
+      <h4>Search bookmarks.</h4>
+            
+      <%= render :partial => 'search' %>
+
+  </td>
+</tr></tbody>
+</table>

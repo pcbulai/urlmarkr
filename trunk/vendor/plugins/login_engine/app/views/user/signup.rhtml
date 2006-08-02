@@ -1,0 +1,27 @@
+<div title="<%= title_helper %>" class="login-form" id="login-form">
+  <div class="login-form-padding" id="login-form-padding">
+    <%= start_form_tag :action => 'signup'  %>
+      <table>
+      	<%= error_messages_for 'user' %>
+      	<tr><td colspan="2" style="text-align: center;"><label>Enter your details</label></td></tr>
+        <%= render_partial 'new', :user => @user, :submit => false %><br/>
+    		<tr class="two_columns">
+          <td><label>Password:</label></td>
+          <td><input id="user_password" name="user[password]" size="20" type="password" value="" /></td>
+        </tr>
+
+            <tr class="two_columns">
+
+          <td><label>Password Confirmation:</label></td>
+          <td><input id="user_password_confirmation" name="user[password_confirmation]" size="20" type="password" value="" /></td>
+        </tr>
+      </td></tr>
+      </table>
+
+      <div class="button-bar">
+        <%= submit_tag 'Signup' %>
+        <%= link_to 'Cancel', :action => 'login' %>
+      </div>
+    <%= end_form_tag %>
+  </div>
+</div>

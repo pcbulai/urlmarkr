@@ -1,0 +1,52 @@
+== Welcome to url.markr
+
+* Homepage: http://urlmarkr.rubyforge.net
+* Author: Joey Walsh
+* Email: nemonoid@rubyforge.org
+* Version: 20060517
+* Copyright: Joey Walsh
+* License: GNU GPL
+
+url.markr is a personal bookmark manager written in Ruby on Rails. It has support for tagging of bookmarks, RSS feeds of links for each tag, inline editing of bookmarks and tag autocompletion on entering a new bookmark. You can also import your existing del.icio.us bookmarks into url.markr.
+
+==Requirements
+
+    * Ruby 1.8.2 or higher
+    * Rails 1.1
+    * acts_as_taggable ruby gem (gem install acts_as_taggable)
+    * MySQL with Ruby bindings
+    * Firefox 1.5+ (not yet tested on other browsers)
+
+== Getting started
+
+1. Checkout the source code or download the tarball.
+2. Create database called urlmarkr. Create the database schema using db/urlmarkr.sql
+3. Edit config/database.yml.orig to reflect your database configuration and save as config/database.yml
+4. Edit config/environment.rb to suit your settings (see http://urlmarkr.nemonoid.org/urlmarkr/wiki/FAQ)
+5. Start the web server: ruby script/server webrick (run with --help for options)
+6. Go to http://localhost:3000/ and your on your way!
+
+You can easily bookmark pages using the Bookmarklet found under the options menu. Simply drag it too your bookmarks toolbar for easy access.
+
+== TODO
+
+    * Sharing of url.markrs
+    * Import bookmarks from other sources such as local files and services other than del.icio.us
+
+
+== License
+
+Copyright (C) Joey Walsh 2006
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 2
+as published by the Free Software Foundation
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.

@@ -1,0 +1,31 @@
+<div title="<%= title_helper %>" class="login-form" id="login-form">
+  <div class="login-form-padding" id="login-form-padding">
+    <%= start_form_tag :action => 'login'  %>
+      <table>
+      	
+      	<tr><td colspan="2" style="text-align: center;"><label>Please Login</label></td></tr>
+      	<% if @flash[:warning] %>
+      		<tr><td colspan="2" style="text-align: center;"><label><%= @flash[:warning] %></td></tr>
+				<% end %>
+				<% if @flash[:notice] %>
+      		<tr><td colspan="2" style="text-align: center;"><label><%= @flash[:notice] %></td></tr>
+				<% end %>
+        <tr class="two_columns">
+          <td><label>Username:</label></td>
+          <td><input id="user_login" name="user[login]" size="30" type="text" value="" /></td>
+        </tr>
+        <tr class="two_columns">
+          <td><label>Password:</label></td>
+          <td><input id="user_password" name="user[password]" size="30" type="password" value="" /></td>
+        </tr>
+        <tr><td>&nbsp;</td><td><%= submit_tag 'Login' %></td></tr>
+        <tr><td>&nbsp;</td><td><%= check_box("user","remember_me") %>Remember me on this computer</td></tr>
+      </table>
+
+      <div class="login-button-bar">
+        <%= link_to 'Register for an account', :controller => 'user', :action => 'signup' %> |
+        <%= link_to 'Forgot my password', :controller => 'user', :action => 'forgot_password' %>
+      </div>
+    <%= end_form_tag %>
+  </div>
+</div>
