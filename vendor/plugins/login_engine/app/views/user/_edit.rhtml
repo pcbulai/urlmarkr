@@ -1,0 +1,11 @@
+<div class="user_edit">
+  <table>
+    <%= form_input changeable(user, "firstname"), "First Name", "firstname", :size => 20 %>
+    <%= form_input changeable(user, "lastname"), "Last Name","lastname", :size => 20 %>
+    <%= form_input changeable(user, "login"), "Login ID", "login", :size => 20 %><br/>
+    <%= form_input changeable(user, "email"), "Email", "email", :size => 20 %>
+    <% if submit %>
+      <%= form_input :submit_button, (user.new_record? ? 'Signup' : 'Change Settings'), :class => 'two_columns' %>
+    <% end %>
+  </table>
+</div>

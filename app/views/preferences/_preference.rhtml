@@ -1,0 +1,48 @@
+<tr id="view-preference-<%= preference.id %>" <%= "style=\"display: none;\"" if hidden %>>
+	<td style="background: #DAFFCD;" colspan="3">	
+
+				<h4>Change Preferences</h4>
+				<fieldset><div class="row">
+				<div class="form-element">
+					<label>Bookmarks Per Page: <%=h preference["bookmarks_per_page"] %></label>
+				</div>
+				<div class="form-element">
+					<label>Tags In Cloud: <%=h preference["tags_in_cloud"] %></label>
+				</div>
+  			<div class="form-element">
+   	  		<label>
+   	  		<%= loading_indicator_tag 'preference', "edit-#{preference.id}" %>
+   	  		<%= link_to_remote "Edit",
+                                :url => { :controller => 'preferences', :action => 'edit', :id => preference },
+                                :loading => "AjaxScaffold.editOnLoading(request,'preference', #{preference.id});",
+                                :success => "AjaxScaffold.editOnSuccess(request,'preference', #{preference.id});",
+                                :failure => "AjaxScaffold.editOnFailure(request,'preference', #{preference.id});",
+                                :complete => "AjaxScaffold.editOnComplete(request,'preference', #{preference.id});",
+                                :post => true; -%></label>
+   			</div>
+				</div></fieldset>
+   			<h4>Change Password</h4>
+   			<div id="changepass">
+   			<fieldset><div class="row">
+   			<p>Enter your new password in the fields below and click 'Change Password'</p>
+   			<%= form_remote_tag :update => 'changepass', :url => { :controller => 'user', :action => 'change_password' } %>
+					<div class="form-element">
+        		<label>Password:</label>
+        		<input id="user_password" name="user[password]" size="20" type="password" value="" />
+        	</div>
+        	<div class="form-element">
+  	    		<label>Password Confirmation:</label>
+			  		<input id="user_password_confirmation" name="user[password_confirmation]" size="20" type="password" value="" />
+    			</div>
+    			<div class="form-element">
+	    			<input name="commit" type="submit" value="Change password" />
+ 			 		</div>
+      	<%= end_form_tag %>
+				</div></fieldset>
+				</div>
+				<h4>Bookmarklet</h4>
+				<fieldset><div class="row">
+					<a href="javascript:void(window.open('<%= SITE_ADDRESS -%>bookmarks/new?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title),'name','height=400,width=520'));">url.markr</a> - Drag to bookmark toolbar to tag pages easily.
+				</div></fieldset>
+  </td>
+</tr>

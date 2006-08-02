@@ -1,0 +1,583 @@
+body {
+font-family: Verdana, Arial, sans-serif;
+}
+#message
+{
+  position: absolute;
+  top: -1px;
+  left: 200px;
+  right: 200px;
+  z-index: 5000;
+  opacity: 0.85;
+}
+
+#message div
+{
+  width: 400px;
+  margin: 0px auto;
+  height: 24px;
+  min-height: 24px;
+  padding: 8px 10px 8px 10px;
+}
+
+#message div.notice
+{
+  background: url(images/display/info.png) 6px 3px no-repeat;
+  background-color: #EF9398;
+  border: 1px solid #DC5757;
+  text-align: center;
+}
+
+#message div.error,
+#message div.warning
+{
+  background: url(images/display/warning.png) 6px 3px no-repeat;
+  background-color: #EF9398;
+  border: 1px solid #DC5757;
+}
+
+#message div.confirmation
+{
+  background: url(images/display/confirm.png) 6px 3px no-repeat;
+  background-color: #A6EF7B;
+  border: 1px solid #76C83F;
+}
+
+#message div.loading
+{
+  background: url(images/display/loading.gif) 6px 3px no-repeat;
+  background-color: #EBEBEB;
+  border: 1px solid #CCCCCC;
+}
+h2 {
+color: #fff;
+padding: 3px 5px;
+margin: 0;
+font-size: 18px;
+font-weight: normal;
+}
+h4 {
+padding: 2px;
+margin: 0;
+font-weight: bold;
+text-transform: none;
+color: #1F7F00;
+font-size: 16px;
+letter-spacing: -1px;
+}
+.login-form {
+text-align: left;
+position: relative;
+width: 420px;
+margin: 10% auto 0 auto;
+color: #fff;
+background-color:  #005CB8; 
+}
+.login-form-padding {
+margin: 10px;
+font-size: 11px;
+font-weight: bold;
+}
+.login-form-padding a {
+color: #fff
+}
+.login-form-padding input {
+font-size: 16px;
+font-weight: bold;
+letter-spacing: -1px;
+padding: 1px;
+border: solid 1px #1F7F00;
+}
+.login-form-padding label {
+font-size: 16px;
+font-weight: bold;
+letter-spacing: -1px;
+padding: 1px;
+}
+.login-button-bar {
+text-align: center;
+padding-top: 10px;
+}
+#page-wrapper {
+width: 93%;
+}
+.menu-wrapper {
+float: left;
+position:absolute;left:0; 
+width: 160px;
+z-index: 2; 
+}
+.menu {
+width: 160px;
+float: left;
+position: relative; 
+margin: 5px 5px;
+}
+.menu-header {
+position: relative;
+background: #005CB8;
+}
+.menu-title {
+font-size: 11px;
+font-weight: bold;
+padding: 2px;
+color: #fff;
+background: #555;
+letter-spacing: 0;
+text-align: left;
+padding-left: 5px;
+}
+.menu h2 {
+color: #fff;
+padding: 3px 5px;
+margin: 0;
+font-size: 18px;
+font-weight: normal;
+}
+.nav {
+width: 152px;
+padding: 2px;
+color: #999;
+border: solid #005CB8;
+border-width: 0px 2px 0px 2px;
+}
+.nav a{
+font-size: 12px;
+letter-spacing: 0px;
+padding: 2px;
+line-height: 22px;
+color: #0066CC;
+font-weight: bold;
+text-decoration: none;
+}
+.nav a:hover{
+background: #ffff30;
+}
+.cloud {
+width: 152px;
+padding: 2px;
+color: #999;
+border: solid #005CB8;
+border-width: 0px 2px 0px 2px;
+}
+.cloud a{
+letter-spacing: 0px;
+padding: 2px;
+line-height: 18px;
+color: #0066CC;
+font-weight: bold;
+text-decoration: none;
+}
+.cloud a:hover{
+background: #ffff30;
+}
+.pagelinks {
+color: #0066CC;
+text-decoration: none;
+font-size: x-small;
+}
+.pagelinks a{
+color: #0066CC;
+text-decoration: none;
+font-size: x-small;
+font-weight: bold;
+}
+.dynamic {
+float: left;
+position:absolute;left:165px; 
+width: 85%;
+height: auto;
+display: inline; 
+position: relative; 
+}
+
+.ajax-scaffold-wrapper form,
+.ajax-scaffold-wrapper table,
+.ajax-scaffold-wrapper p,
+.ajax-scaffold-wrapper div,
+.ajax-scaffold-wrapper fieldset,
+.ajax-scaffold form,
+.ajax-scaffold table,
+.ajax-scaffold p,
+.ajax-scaffold div,
+.ajax-scaffold fieldset {
+margin: 0;
+padding: 0;
+}
+
+.ajax-scaffold a {
+color: #0066CC;
+text-decoration: none;
+}
+
+.ajax-scaffold-wrapper {
+margin: 5px 0;
+}
+
+.ajax-scaffold {
+width: 100%;
+border: solid #005CB8;
+border-width: 0px 2px 0px 2px;
+}
+
+/* Header Styling
+   ======================== */
+
+.ajax-scaffold-header {
+position: relative;
+background: #005CB8;
+}
+
+.ajax-scaffold-header div.actions a {
+color: #fff;
+font-size: 13px;
+font-weight: bold;
+text-decoration: none;
+padding: 1px 2px 1px 19px;
+}
+
+.ajax-scaffold-header div.actions a:hover {
+
+}
+
+.ajax-scaffold-header h2 {
+color: #fff;
+padding: 3px 5px;
+margin: 0;
+font-size: 18px;
+font-weight: normal;
+}
+
+.ajax-scaffold-header .actions {
+position: absolute;
+right: 5px;
+bottom: 2px;
+}
+.ajax-scaffold-header .search {
+position: absolute;
+left: 130px;
+bottom: 2px;
+}
+
+/* Table Column Headers
+   ============================= */
+
+.ajax-scaffold tr.header {
+background: #C5DBF7;
+}
+
+.ajax-scaffold th {
+font-size: 11px;
+padding: 2px;
+color: #fff;
+background: #555;
+letter-spacing: 0;
+text-align: left;
+padding-left: 5px;
+}
+.ajax-scaffold th a {
+font-size: 11px;
+padding: 2px;
+color: #fff;
+background: #555;
+letter-spacing: 0;
+text-align: left;
+padding-left: 5px;
+}
+
+/* Table Body Styling
+   ============================= */
+
+#bookmark-list.ajax-scaffold td {
+padding: 5px 4px;
+border-bottom: solid 1px #C5DBF7;
+color: #333;
+font-size: 11px;
+background-color: #fff;
+}
+.ajax-scaffold td {
+padding: 5px 4px;
+border-bottom: solid 0px #C5DBF7;
+color: #333;
+font-size: 11px;
+background-color: #fff;
+}
+.ajax-scaffold td.mark {	
+overflow:hidden;
+white-space:nowrap;	
+}
+.ajax-scaffold tr.even td {
+background-color: #fff;
+}
+
+.ajax-scaffold .edit td,
+.ajax-scaffold .create td {
+padding: 0;
+padding: 4px;
+}
+
+/* Table Actions (Edit, Delete) Styling
+   ============================= */
+
+.ajax-scaffold td a {
+font-size: 14px;
+font-weight: bold;
+letter-spacing: 0px;
+padding: 2px;
+line-height: 18px;
+}
+
+.ajax-scaffold td .actions a {
+font-size: 10px;
+letter-spacing: 0px;
+padding: 0px;
+color: #999;
+}
+
+.ajax-scaffold td .tags a {
+font-size: 10px;
+letter-spacing: 0px;
+padding: 0px;
+line-height: 18px;
+color: #999
+}
+
+/* The following fixes some very weird 
+     layout issue in IE where the edit link
+     is too close to the delete link after 
+     the introduction of the taconite JS library
+.ajax-scaffold .actions a {
+display: block;
+float: right;
+padding: 0 2px;
+margin-left: 3px;
+}
+ */
+
+.ajax-scaffold td a:hover {
+background: #ffff30;
+}
+
+.ajax-scaffold .edit tr,
+.ajax-scaffold .create tr {
+background: #DAFFCD;
+}
+
+.ajax-scaffold .edit td,
+.ajax-scaffold .create td {
+border-top: solid 2px #fff;
+border-bottom: solid 2px #fff;
+}
+td.value,
+td.prompt {
+background: #DAFFCD;
+}
+.ajax-scaffold .actions div {
+width: 15px;
+text-align: right;
+float: right;
+padding-right: 2px;
+}
+
+/* ajax-scaffold Footer Styling 
+   ========================== */
+
+.ajax-scaffold-wrapper .ajax-scaffold-footer {
+text-align: right;
+background: #005CB8;
+padding: 2px 0;
+border-bottom: none;
+}
+
+.ajax-scaffold tfoot a {
+color: #fff;
+font-size: 12px;
+font-weight: bold;
+letter-spacing: 0;
+}
+
+.ajax-scaffold tfoot a:hover {
+color: #0066CC;
+}
+
+/* Messages 
+   ========================= */
+
+.ajax-scaffold .empty-message td {
+background: #e8e8e8;
+text-align: center;
+color: #666;
+}
+
+.ajax-scaffold .error-message td {
+border-bottom: solid 1px #fff;
+background: #f66;
+color: #333;
+font-size: 11px;
+font-weight: bold;
+}
+
+.ajax-scaffold .error-message p {
+padding-left: 19px;
+background: url(/images/error.gif) 0 0 no-repeat;
+}
+
+.ajax-scaffold .error-message td.actions {
+background: #f66;
+text-align: right;
+}
+
+.ajax-scaffold .error-message td.actions a {
+color: #333;
+}
+
+/* Error Styling 
+   ========================== */
+
+.ajax-scaffold #errorExplanation {
+background: #fcc;
+margin: 2px 7px;
+border: solid 1px #f66;
+float: left;
+}
+
+.ajax-scaffold fieldset {
+clear: both;
+}
+
+.ajax-scaffold #errorExplanation h2 {
+padding: 2px 5px 3px 20px;
+color: #333;
+font-size: 11px;
+margin: 0;
+letter-spacing: 0;
+background: #f66 url(/images/error.gif) 2px 1px no-repeat;
+}
+
+.ajax-scaffold #errorExplanation ul {
+margin: 0;
+padding: 2px 2px 4px 25px;
+}
+
+.ajax-scaffold #errorExplanation p {
+font-size: 11px;
+padding: 2px 5px;
+margin: 0;
+}
+
+.ajax-scaffold #errorExplanation ul li {
+font-size: 11px;
+margin: 0;
+padding: 0;
+}
+
+.ajax-scaffold .fieldWithErrors input {
+border: solid 1px #f00;
+}
+
+/* Loading Indicators
+   ============================== */
+
+.ajax-scaffold-wrapper .loading-indicator {
+vertical-align: bottom;
+margin: 0;
+}
+
+.ajax-scaffold-wrapper .ajax-scaffold-header .loading-indicator,
+.ajax-scaffold-wrapper .edit .loading-indicator,
+.ajax-scaffold-wrapper .create .loading-indicator {
+vertical-align: bottom;
+margin-bottom: 3px;
+}
+
+/* Form Styling 
+   ============================== */
+   
+.ajax-scaffold-wrapper .submit,
+.ajax-scaffold .submit {
+font-weight: bold;
+font-size: 14px;
+letter-spacing: 0;
+margin: 0;
+margin-top: 5px;
+}
+
+.ajax-scaffold-wrapper fieldset,
+.ajax-scaffold fieldset {
+border: none;
+}
+
+.ajax-scaffold label.required{
+font-weight: bold;
+}
+
+.ajax-scaffold label.example {
+font-size: 11px;
+color: #888;
+}
+
+.ajax-scaffold h4 {
+padding: 2px;
+margin: 0;
+font-weight: bold;
+text-transform: none;
+color: #1F7F00;
+font-size: 16px;
+letter-spacing: -1px;
+}
+
+.ajax-scaffold .edit a,
+.ajax-scaffold .create a {
+font-size: 14px;
+font-weight: bold;
+letter-spacing: 0;
+}
+
+.ajax-scaffold p {
+clear: both;
+}
+
+.ajax-scaffold div.row {
+padding: 2px;
+margin-left: 5px;
+}
+
+.ajax-scaffold div.form-element {
+margin-right: 10px;
+margin-bottom: 2px;
+}
+
+.ajax-scaffold label {
+display: block;
+color: #555;
+font-size: 11px;
+padding-bottom: 1px;
+}
+
+.ajax-scaffold input,
+.ajax-scaffold select {
+font-size: 16px;
+font-weight: bold;
+letter-spacing: -1px;
+}
+
+.ajax-scaffold .form-element input {
+padding: 1px;
+border: solid 1px #1F7F00;
+}
+
+.ajax-scaffold textarea {
+height: 65px;
+font-family: Arial, sans-serif;
+font-size: 16px;
+font-weight: bold;
+padding: 1px;
+border: solid 1px #1F7F00;
+}
+
+/* IE hacks
+   ==================================== */
+   
+* html .ajax-scaffold-header {
+height: 1%;
+}   

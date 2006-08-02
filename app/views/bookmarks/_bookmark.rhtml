@@ -1,0 +1,45 @@
+<% # The following is used when the browser doesn't have javascript enabled %>
+<% classAttr = cycle("", "class=\"even\"") %>
+<tr <%= classAttr %> id="view-bookmark-<%= bookmark.id %>" <%= "style=\"display: none;\"" if hidden %>>
+	<td class="mark">
+		<%= link_to bookmark["name"], bookmark["url"], :alt=> bookmark["url"], :title => bookmark["url"] %>
+		<%= link_to(image_tag("newwindow.gif", :border => 0, :align => 'absmiddle'), "#{bookmark["url"]}",
+		  :popup => true, :alt=> "open in new window", :title =>"open in new window") %>&nbsp;
+		<span class="actions">
+												<%= link_to_remote "edit", 
+   	                    { :url => { :controller => 'bookmarks', :action => 'edit', :id => bookmark }, 
+   	                      :loading => "AjaxScaffold.editOnLoading(request,'bookmark', #{bookmark.id});",
+   	                      :success => "AjaxScaffold.editOnSuccess(request,'bookmark', #{bookmark.id});",
+   	                      :failure => "AjaxScaffold.editOnFailure(request,'bookmark', #{bookmark.id});",
+   	                      :post => true },
+   	                    { :href => url_for( :controller => 'bookmarks', :action => 'edit', :id => bookmark ),
+   	                      :title =>"edit bookmark" } %>
+   	                    /
+   	                    <%= link_to_remote "delete", 
+   	                    { :url => { :controller => 'bookmarks',:action => 'destroy', :id => bookmark }, 
+   	                      :confirm => 'Are you sure?', 
+   	                      :loading => "AjaxScaffold.deleteOnLoading('bookmark', #{bookmark.id});",
+   	                      :success => "AjaxScaffold.deleteOnSuccess('bookmark', #{bookmark.id});",
+   	                      :failure => "AjaxScaffold.deleteOnFailure('bookmark', #{bookmark.id});",
+   	                      :post => true },
+   	                    { :href => url_for(:controller => 'bookmarks', :action => 'destroy', :id => bookmark),
+	   	                    :title =>"delete bookmark" } %>
+   	</span>
+		<% if !bookmark["description"].empty? %><br />&nbsp; <%= bookmark["description"] %><% end %>
+		<br />&nbsp; tagged : <% if bookmark.tag_names.empty? %>
+														none
+													<% end %>
+													<% for tag in bookmark.tag_names %>
+														<span class="tags">
+  														<%= link_to_remote(h("#{tag}"), :update => "dynamic", :url =>{ :action => "list", 
+  															:tags => "#{tag}" }) -%>
+		 												</span>
+		 											<% end %>
+		 											on <%= bookmark["created_on"] -%>
+	</td>
+ 	<td class="actions">
+ 	  <div>
+ 	  <%= loading_indicator_tag 'bookmark', "edit-#{bookmark.id}" -%>
+   	</div>
+  </td>
+</tr>

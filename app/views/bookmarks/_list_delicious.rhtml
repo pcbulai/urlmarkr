@@ -1,0 +1,13 @@
+<% # The following is used when the browser doesn't have javascript enabled %>
+<% classAttr = cycle("", "class=\"even\"") %>
+<tr <%= classAttr %> id="view-bookmark">
+	<td class="mark">
+		<%= link_to @del_link.post.description, @del_link.href, :alt=> @del_link.description, :title => @del_link.description %>
+		<%= link_to(image_tag("newwindow.gif", :border => 0, :align => 'absmiddle'), "#{@del_link.description}",
+		  :popup => true, :alt=> "open in new window", :title =>"open in new window") %>&nbsp;
+		
+	</td>
+ 	<td class="actions">
+Actions here
+  </td>
+</tr>

@@ -1,0 +1,87 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>url.markr</title>
+  <%= stylesheet_link_tag 'ajax_scaffold', :media => 'all' %>
+  <%= javascript_include_tag 'prototype', 'effects', 'rico_corner', 'ajax_scaffold', 'controls' %>
+  <link rel="alternate" title="Bookmarks RSS" href="/bookmarks/rss" type="application/rss+xml">
+</head>
+<body>
+</div>
+<div id="page-wrapper">
+<div class="menu-wrapper" id="menu-wrapper">
+<div class="menu" id="menu">
+<div class="menu-header" id="menu-header">
+<h2>menu</h2>
+</div>
+<div class="menu-title">navigation</div>
+<div class="nav" id="nav">
+  <%= image_tag('add-new-bookmark.gif', :align => 'absmiddle') %>
+  <%= link_to_remote "New Bookmark", 
+         { :url => { :controller => 'bookmarks', :action => 'new' }, 
+           :loading => "AjaxScaffold.newOnLoading(request,'bookmark');",
+			     :success => "AjaxScaffold.newOnSuccess(request,'bookmark');",
+			     :failure => "AjaxScaffold.newOnFailure(request,'bookmark');" },
+         { :href => url_for(:controller => 'bookmarks', :action => 'new'), 
+			     :class => "create" } %>
+	<%= loading_indicator_tag 'bookmark', "new" %>
+	<br />
+	<%= image_tag('showall-bookmark.gif', :align => 'absmiddle') %>
+	<%= link_to_remote(h("Show All"), :update => "dynamic",
+			:url =>{ :action => "list"}, 
+			:loading => "AjaxScaffold.newOnLoading(request,'showall');", 
+			:complete => "Effect.Fade('showall-new-loading-indicator', {duration:0.1});") %>
+	<%= loading_indicator_tag 'showall', "new" %>
+	<br />
+	<%= image_tag('search.gif', :align => 'absmiddle') %>
+	<%= link_to_remote(h("Search"), :update => "edit-tags", 
+			:url =>{ :controller => 'bookmarks', :action => "search"},
+			:loading => "AjaxScaffold.newOnLoading(request,'options');", 
+			:complete => "Effect.Fade('options-new-loading-indicator', {duration:0.1});") %>
+	<%= loading_indicator_tag 'options', "new" %>
+	<br />
+	<%= image_tag('options.gif', :align => 'absmiddle') %>
+	<%= link_to_remote(h("Options"), :update => "edit-tags", 
+			:url =>{ :controller => 'preferences', :action => "list"},
+			:loading => "AjaxScaffold.newOnLoading(request,'options');", 
+			:complete => "Effect.Fade('options-new-loading-indicator', {duration:0.1});") %>
+	<%= loading_indicator_tag 'options', "new" %>
+	<br />
+	<%= image_tag('import.gif', :align => 'absmiddle') %>
+	<%= link_to_remote(h("Import"), :update => "edit-tags", 
+			:url =>{ :controller => 'bookmarks', :action => "import"},
+			:loading => "AjaxScaffold.newOnLoading(request,'options');", 
+			:complete => "Effect.Fade('options-new-loading-indicator', {duration:0.1});") %>
+	<%= loading_indicator_tag 'options', "new" %>
+	<br />
+	<%= image_tag("logout.gif", :align => 'absmiddle', :border => '0' ) %>
+	<%= link_to "Logout", { :controller => 'user', :action => 'logout' } %>
+</div>
+<div class="menu-title">tag cloud</div>
+<div class="cloud" id="cloud" align="center">
+<% tag_cloud(@tagged_items, %w(x-small small medium large x-large)) do |tag, font_size| %>
+  <span style="font-size: <%= font_size %>">
+  <%= link_to_remote(h("#{tag}"), :update => "dynamic",
+		 :url =>{ :action => "list", :tags => "#{tag}" }, 
+		 :title =>"#{tag}") -%></span>
+<% end %>
+</div>
+</div>
+</div>
+<div id="dynamic" class="dynamic">
+
+<%= @content_for_layout %>
+</div>
+</div>
+<script type="text/javascript">
+Rico.Corner.round('menu', {color: '#005CB8', bgColor: '#fff', compact: true});
+</script>
+<% if @flash['status'] %>
+<script type="text/javascript">
+Effect.Fold('message',{ duration: 2.0 });
+</script>
+<% end %>
+</body>
+</html>

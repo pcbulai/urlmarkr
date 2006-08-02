@@ -1,0 +1,22 @@
+<tr id="<%= "edit-preference-#{@preference.id}" %>" class="edit" style="display: none;">
+	<td colspan="<%= num_columns %>"  style="background: #DAFFCD;">
+		<%= form_remote_tag :url => { :controller => 'preferences', :action => 'update', :id => @preference },
+  		:loading => "AjaxScaffold.updateOnLoading(request,'preference',#{@preference.id});", 
+			:success => "AjaxScaffold.updateOnSuccess(request,'preference',#{@preference.id});", 
+			:failure => "AjaxScaffold.updateOnFailure(request,'preference',#{@preference.id});", 
+			:complete => "AjaxScaffold.updateOnComplete(request,'preference',#{@preference.id});", 
+			:html => { :id => "edit-preference-#{@preference.id}-form" } %>
+  	<h4>Edit Preference</h4>
+  	
+  	<div id="<%= "update-preference-#{@preference.id}-errors" %>" style="display: none;" ></div>
+  	
+  	<%= render :partial => 'form' %>
+  	
+  	<p>
+  		<%= submit_tag "Update", :class => "submit" %>
+  		<%= link_to_function "Cancel", "AjaxScaffold.updateOnCancel('preference',#{@preference.id});" %>
+  		<%= loading_indicator_tag 'preference', "update-#{@preference.id}" %>
+  	</p>
+  	<%= end_form_tag %>
+	</td>
+</tr>

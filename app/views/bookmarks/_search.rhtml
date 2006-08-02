@@ -1,0 +1,19 @@
+<fieldset>
+	<div class="row">
+		<!--[form:import]-->
+		<%= form_remote_tag :update => 'dynamic', :url => { :controller => 'bookmarks', :action => 'list' },
+		:loading => "AjaxScaffold.newOnLoading(request,'import');", 
+		:complete => "Effect.Fade('import-new-loading-indicator', {duration:0.1});" %>
+		<div class="form-element">
+			<label for="import_delicious_username">Enter your search term.</label>
+			<input type="text"  name="search_term" />
+			<input type="hidden" name="do_search" value="yes" />
+		</div>
+		<div class="form-element">
+		  <%= submit_tag "Search", :class => "submit" %><%= loading_indicator_tag 'import', "new" %>
+		</div>
+    <%= end_form_tag %>
+		<!--[eoform:import]-->
+
+	</div>
+</fieldset>

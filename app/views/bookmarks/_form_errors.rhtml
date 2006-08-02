@@ -1,0 +1,9 @@
+<% unless @bookmark.nil? %>
+<%= error_messages_for 'bookmark' %>
+<% end -%>
+
+<% for name in [:notice, :warning, :error, :message] %>
+  <% if @flash[name] %>
+    <%= "<div class=\"#{name}\">#{@flash[name]}</div>" %>
+  <% end %>
+<% end %>
