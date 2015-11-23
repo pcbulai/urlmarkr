@@ -1,0 +1,1 @@
+urlmarkr is a personal bookmark manager written in Ruby on Rails. It has support for tagging of bookmarks, RSS feeds of links for each tag, inline editing of bookmarks and AJAX tag autocompletion. The project began as a way for me to pick up Ruby on Rails and also to allow me to host my own bookmarks, without being dependant on a third party such as del.icio.us or simpy.com.
